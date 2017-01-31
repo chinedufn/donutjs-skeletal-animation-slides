@@ -8,6 +8,7 @@ function initModels (gl) {
   var models = { }
 
   models.cube = loadModel(gl, require('../../asset/cube.json'))
+  models.cubeBone = loadModel(gl, require('../../asset/cube-bone.json'))
 
   return models
 }

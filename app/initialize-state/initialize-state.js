@@ -8,7 +8,8 @@ var defaultState = {
   // Set the default path for the router
   path: require('global/document').location ? require('global/document').location.pathname : '/',
   perspective: mat4Perspective([], Math.PI / 4, 500 / 500, 0.01, 100),
-  slideNum: 0
+  slideNum: 0,
+  currentClockTime: 0
 }
 
 function initializeState (initialState) {

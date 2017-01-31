@@ -1,4 +1,4 @@
-var skeletalAnimationSystem = require('skeletal-animation-system')
+var animationSystem = require('skeletal-animation-system')
 var createOrbitCamera = require('create-orbit-camera')
 var vec3Normalize = require('gl-vec3/normalize')
 var vec3Scale = require('gl-vec3/scale')
@@ -15,12 +15,16 @@ function renderIntroduction (h, StateStore) {
 
 var xRadians = 0
 function renderCanvas (gl, models, state) {
+  gl.viewport(0, 0, 500, 500)
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+  gl.useProgram(models.cube.shaderProgram)
+
   xRadians += 0.01
   var camera = createOrbitCamera({
     position: [0, 3, -15],
     target: [0, 0, 0],
     xRadians: 0,
-    yRadians: xRadians
+    yRadians: 0
   })
 
   var lightingDirection = [1, -3, -1]
@@ -29,10 +33,41 @@ function renderCanvas (gl, models, state) {
   vec3Scale(normalizedLD, normalizedLD, -1)
   require('gl-vec3/transformMat4')(normalizedLD, normalizedLD, camera.viewMatrix)
 
-  gl.viewport(0, 0, 500, 500)
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+  var interpolatedQuats = animationSystem.interpolateJoints({
+    blendFunction: function (dt) {
+      // Blend linearly over 1 second
+      return dt
+    },
+    currentTime: state.currentClockTime,
+    keyframes: models.cube.keyframes,
+    jointNums: [0],
+    currentAnimation: {
+      range: [0, 4],
+      startTime: 0
+    }
+    // previousAnimation: state.upperBody.previousAnimation
+  })
 
-  gl.useProgram(models.cube.shaderProgram)
+  var interpolatedRotQuats = []
+  var interpolatedTransQuats = []
+
+  var jointNums = [0]
+  jointNums.forEach(function (jointNum) {
+    interpolatedRotQuats[jointNum] = interpolatedQuats[jointNum].slice(0, 4)
+    interpolatedTransQuats[jointNum] = interpolatedQuats[jointNum].slice(4, 8)
+  })
+
+  var uniforms = {
+    uUseLighting: true,
+    uAmbientColor: [0.2, 0.2, 0.2],
+    uLightingDirection: normalizedLD,
+    uDirectionalColor: [1.0, 0, 0],
+    uMVMatrix: camera.viewMatrix,
+    uPMatrix: state.perspective,
+    boneRotQuaternions0: interpolatedRotQuats[0],
+    boneTransQuaternions0: interpolatedTransQuats[0]
+  }
+
   models.cube.draw({
     attributes: {
       aVertexPosition: models.cube.bufferData.aVertexPosition,
@@ -40,15 +75,6 @@ function renderCanvas (gl, models, state) {
       aJointIndex: models.cube.bufferData.aJointIndex,
       aJointWeight: models.cube.bufferData.aJointWeight
     },
-    uniforms: {
-      uUseLighting: true,
-      uAmbientColor: [0.2, 0.2, 0.2],
-      uLightingDirection: normalizedLD,
-      uDirectionalColor: [1.0, 0, 0],
-      uMVMatrix: camera.viewMatrix,
-      uPMatrix: state.perspective,
-      boneRotQuaternions0: models.cube.keyframes['0.04166662'][0].slice(0, 4),
-      boneTransQuaternions0: models.cube.keyframes['0.04166662'][0].slice(4, 8)
-    }
+    uniforms: uniforms
   })
 }

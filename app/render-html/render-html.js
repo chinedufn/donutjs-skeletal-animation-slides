@@ -9,14 +9,16 @@ function renderHTML (StateStore) {
 
   return h('div', {
     style: {
-      display: 'flex'
+      display: 'flex',
+      width: '100%',
+      height: '250px'
     }
   }, [
     // Left slide button
     h('button#slide-left', {
       onclick: function () {
         var curState = StateStore.get()
-        curState.slideNum += 1
+        curState.slideNum -= 1
         curState.slideNum = Math.max(0, curState.slideNum)
         StateStore.set(curState)
       }

@@ -38,8 +38,18 @@ function InitApp () {
 
   var appElement = document.createElement('div')
   appElement.style.height = '100%'
+  appElement.style.display = 'flex'
+  appElement.style.flexDirection = 'column'
   appElement.appendChild(htmlElement)
-  appElement.appendChild(canvas)
+
+  var canvasWrapperDiv = document.createElement('div')
+  canvasWrapperDiv.appendChild(canvas)
+  canvasWrapperDiv.style.height = '100%'
+  canvasWrapperDiv.style.display = 'flex'
+  canvasWrapperDiv.style.alignItems = 'center'
+  canvasWrapperDiv.style.justifyContent = 'center'
+
+  appElement.appendChild(canvasWrapperDiv)
 
   return {
     element: appElement

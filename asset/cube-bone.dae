@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.76.0 commit date:2015-11-03, commit time:10:56, hash:f337fea</authoring_tool>
+    </contributor>
+    <created>2017-01-30T21:11:35</created>
+    <modified>2017-01-30T21:11:35</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_effects/>
+  <library_geometries>
+    <geometry id="Icosphere-mesh" name="Icosphere">
+      <mesh>
+        <source id="Icosphere-mesh-positions">
+          <float_array id="Icosphere-mesh-positions-array" count="126">0 0 2.006732 0.3657715 -0.2657454 2.286154 -0.1397095 -0.4299891 2.286154 -0.4521176 0 2.286156 -0.1397095 0.4299891 2.286154 0.3657715 0.2657454 2.286154 0.1397095 -0.4299891 2.738278 -0.3657715 -0.2657454 2.738278 -0.3657715 0.2657454 2.738278 0.1397095 0.4299891 2.738278 0.4521176 0 2.738276 0 0 3.017699 -0.08211857 -0.2527393 2.082224 0.2149935 -0.1562001 2.082224 0.1328758 -0.408942 2.246464 0.4299884 0 2.246465 0.2149935 0.1562001 2.082224 -0.2657477 0 2.082226 -0.3478683 -0.2527402 2.246465 -0.08211857 0.2527393 2.082224 -0.3478683 0.2527402 2.246465 0.1328758 0.408942 2.246464 0.480744 -0.1562007 2.512216 0.480744 0.1562007 2.512216 0 -0.5054834 2.512216 0.2971159 -0.4089446 2.512216 -0.480744 -0.1562007 2.512216 -0.2971159 -0.4089446 2.512216 -0.2971159 0.4089446 2.512216 -0.480744 0.1562007 2.512216 0.2971159 0.4089446 2.512216 0 0.5054834 2.512216 0.3478683 -0.2527402 2.777967 -0.1328758 -0.408942 2.777968 -0.4299884 0 2.777967 -0.1328758 0.408942 2.777968 0.3478683 0.2527402 2.777967 0.08211857 -0.2527393 2.942208 0.2657477 0 2.942206 -0.2149935 -0.1562001 2.942208 -0.2149935 0.1562001 2.942208 0.08211857 0.2527393 2.942208</float_array>
+          <technique_common>
+            <accessor source="#Icosphere-mesh-positions-array" count="42" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Icosphere-mesh-normals">
+          <float_array id="Icosphere-mesh-normals-array" count="240">0.1023815 -0.3150898 -0.9435235 0.7002248 -0.2680317 -0.661698 -0.2680338 -0.1947363 -0.9435231 -0.2680338 0.1947363 -0.9435231 0.1023815 0.3150898 -0.9435235 0.904989 -0.2680316 -0.3303848 0.02474635 -0.9435215 -0.3303861 -0.8896976 -0.3150944 -0.3303843 -0.5746028 0.748783 -0.3303871 0.5345761 0.7778644 -0.3303866 0.8026087 -0.5831271 -0.1256274 -0.3065689 -0.9435216 -0.1256288 -0.9920774 0 -0.1256286 -0.3065689 0.9435216 -0.1256288 0.8026087 0.5831271 -0.1256274 0.4089472 -0.6284248 0.6616981 -0.4712994 -0.5831225 0.6616986 -0.700224 0.268032 0.6616988 0.03853052 0.7487789 0.6616989 0.7240419 0.194736 0.6616957 0.2680352 0.1947371 0.9435225 0.4911183 0.3568215 0.794658 0.4089473 0.6284248 0.6616981 -0.1023806 0.3150904 0.9435234 -0.1875949 0.5773451 0.7946577 -0.4712987 0.5831227 0.6616989 -0.3313043 0 0.943524 -0.6070605 0 0.7946556 -0.7002241 -0.268032 0.6616988 -0.1023798 -0.3150905 0.9435234 -0.1875949 -0.5773451 0.7946577 0.03852969 -0.7487789 0.661699 0.2680352 -0.1947371 0.9435225 0.4911183 -0.3568215 0.7946581 0.7240419 -0.1947361 0.6616957 0.8896974 0.3150945 0.3303847 0.7946556 0.577348 0.1875951 0.5746008 0.7487843 0.3303878 -0.02474564 0.9435213 0.3303865 -0.3035312 0.9341714 0.1875975 -0.5345763 0.7778643 0.3303869 -0.904989 0.2680314 0.3303848 -0.9822459 0 0.1875984 -0.904989 -0.2680314 0.3303848 -0.5345763 -0.7778643 0.3303869 -0.3035312 -0.9341713 0.1875975 -0.02474564 -0.9435213 0.3303865 0.5746008 -0.7487843 0.3303878 0.7946556 -0.577348 0.1875951 0.8896974 -0.3150945 0.3303847 0.3065684 0.9435217 0.125629 0.3035306 0.9341715 -0.1875974 0.02474635 0.9435215 -0.3303861 -0.802609 0.5831267 0.1256275 -0.7946555 0.5773482 -0.1875949 -0.8896976 0.3150945 -0.3303841 -0.802609 -0.5831267 0.1256275 -0.7946553 -0.5773483 -0.187595 -0.5746026 -0.7487832 -0.3303872 0.3065685 -0.9435217 0.125629 0.3035308 -0.9341716 -0.1875973 0.5345759 -0.7778646 -0.3303866 0.9920774 0 0.1256284 0.9822458 0 -0.1875986 0.904989 0.2680316 -0.3303848 0.4713007 0.583122 -0.6616982 0.1875942 0.5773454 -0.7946577 -0.03852975 0.7487794 -0.6616985 -0.4089465 0.6284255 -0.6616981 -0.4911193 0.356821 -0.7946575 -0.7240428 0.1947358 -0.6616949 -0.7240428 -0.1947358 -0.6616949 -0.491119 -0.3568211 -0.7946577 -0.4089465 -0.6284255 -0.6616981 0.7002249 0.2680317 -0.661698 0.6070605 0 -0.7946556 0.3313043 0 -0.943524 -0.03852975 -0.7487794 -0.6616985 0.1875949 -0.5773453 -0.7946577 0.4713007 -0.583122 -0.6616982</float_array>
+          <technique_common>
+            <accessor source="#Icosphere-mesh-normals-array" count="80" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Icosphere-mesh-vertices">
+          <input semantic="POSITION" source="#Icosphere-mesh-positions"/>
+        </vertices>
+        <polylist count="80">
+          <input semantic="VERTEX" source="#Icosphere-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Icosphere-mesh-normals" offset="1"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>0 0 13 0 12 0 1 1 13 1 15 1 0 2 12 2 17 2 0 3 17 3 19 3 0 4 19 4 16 4 1 5 15 5 22 5 2 6 14 6 24 6 3 7 18 7 26 7 4 8 20 8 28 8 5 9 21 9 30 9 1 10 22 10 25 10 2 11 24 11 27 11 3 12 26 12 29 12 4 13 28 13 31 13 5 14 30 14 23 14 6 15 32 15 37 15 7 16 33 16 39 16 8 17 34 17 40 17 9 18 35 18 41 18 10 19 36 19 38 19 38 20 41 20 11 20 38 21 36 21 41 21 36 22 9 22 41 22 41 23 40 23 11 23 41 24 35 24 40 24 35 25 8 25 40 25 40 26 39 26 11 26 40 27 34 27 39 27 34 28 7 28 39 28 39 29 37 29 11 29 39 30 33 30 37 30 33 31 6 31 37 31 37 32 38 32 11 32 37 33 32 33 38 33 32 34 10 34 38 34 23 35 36 35 10 35 23 36 30 36 36 36 30 37 9 37 36 37 31 38 35 38 9 38 31 39 28 39 35 39 28 40 8 40 35 40 29 41 34 41 8 41 29 42 26 42 34 42 26 43 7 43 34 43 27 44 33 44 7 44 27 45 24 45 33 45 24 46 6 46 33 46 25 47 32 47 6 47 25 48 22 48 32 48 22 49 10 49 32 49 30 50 31 50 9 50 30 51 21 51 31 51 21 52 4 52 31 52 28 53 29 53 8 53 28 54 20 54 29 54 20 55 3 55 29 55 26 56 27 56 7 56 26 57 18 57 27 57 18 58 2 58 27 58 24 59 25 59 6 59 24 60 14 60 25 60 14 61 1 61 25 61 22 62 23 62 10 62 22 63 15 63 23 63 15 64 5 64 23 64 16 65 21 65 5 65 16 66 19 66 21 66 19 67 4 67 21 67 19 68 20 68 4 68 19 69 17 69 20 69 17 70 3 70 20 70 17 71 18 71 3 71 17 72 12 72 18 72 12 73 2 73 18 73 15 74 16 74 5 74 15 75 13 75 16 75 13 76 0 76 16 76 12 77 14 77 2 77 12 78 13 78 14 78 13 79 1 79 14 79</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_animations>
+    <animation id="Armature_Bone_pose_matrix">
+      <source id="Armature_Bone_pose_matrix-input">
+        <float_array id="Armature_Bone_pose_matrix-input-array" count="3">0.04166662 1.666667 3.333333</float_array>
+        <technique_common>
+          <accessor source="#Armature_Bone_pose_matrix-input-array" count="3" stride="1">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Armature_Bone_pose_matrix-output">
+        <float_array id="Armature_Bone_pose_matrix-output-array" count="48">1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1 1 0 0 1 0 0 -1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1</float_array>
+        <technique_common>
+          <accessor source="#Armature_Bone_pose_matrix-output-array" count="3" stride="16">
+            <param name="TRANSFORM" type="float4x4"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Armature_Bone_pose_matrix-interpolation">
+        <Name_array id="Armature_Bone_pose_matrix-interpolation-array" count="3">LINEAR LINEAR LINEAR</Name_array>
+        <technique_common>
+          <accessor source="#Armature_Bone_pose_matrix-interpolation-array" count="3" stride="1">
+            <param name="INTERPOLATION" type="name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="Armature_Bone_pose_matrix-sampler">
+        <input semantic="INPUT" source="#Armature_Bone_pose_matrix-input"/>
+        <input semantic="OUTPUT" source="#Armature_Bone_pose_matrix-output"/>
+        <input semantic="INTERPOLATION" source="#Armature_Bone_pose_matrix-interpolation"/>
+      </sampler>
+      <channel source="#Armature_Bone_pose_matrix-sampler" target="Bone/transform"/>
+    </animation>
+  </library_animations>
+  <library_controllers>
+    <controller id="Armature_Icosphere-skin" name="Armature">
+      <skin source="#Icosphere-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="Armature_Icosphere-skin-joints">
+          <Name_array id="Armature_Icosphere-skin-joints-array" count="1">Bone</Name_array>
+          <technique_common>
+            <accessor source="#Armature_Icosphere-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Armature_Icosphere-skin-bind_poses">
+          <float_array id="Armature_Icosphere-skin-bind_poses-array" count="16">1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Armature_Icosphere-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Armature_Icosphere-skin-weights">
+          <float_array id="Armature_Icosphere-skin-weights-array" count="42">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Armature_Icosphere-skin-weights-array" count="42" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#Armature_Icosphere-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#Armature_Icosphere-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="42">
+          <input semantic="JOINT" source="#Armature_Icosphere-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#Armature_Icosphere-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 17 0 18 0 19 0 20 0 21 0 22 0 23 0 24 0 25 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Armature" name="Armature" type="NODE">
+        <translate sid="location">0 0 0</translate>
+        <rotate sid="rotationZ">0 0 1 0</rotate>
+        <rotate sid="rotationY">0 1 0 0</rotate>
+        <rotate sid="rotationX">1 0 0 0</rotate>
+        <scale sid="scale">1 1 1</scale>
+        <node id="Bone" name="Bone" sid="Bone" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1</matrix>
+        </node>
+      </node>
+      <node id="Icosphere" name="Icosphere" type="NODE">
+        <translate sid="location">0 0 0</translate>
+        <rotate sid="rotationZ">0 0 1 0</rotate>
+        <rotate sid="rotationY">0 1 0 0</rotate>
+        <rotate sid="rotationX">1 0 0 0</rotate>
+        <scale sid="scale">1 1 1</scale>
+        <instance_controller url="#Armature_Icosphere-skin">
+          <skeleton>#Bone</skeleton>
+        </instance_controller>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
