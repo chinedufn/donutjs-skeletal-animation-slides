@@ -36,3 +36,8 @@ var slidesDomElement = skeletalAnimationSlides()
 
 document.body.appendChild(slidesDomElement)
 ```
+
+## Comments
+
+I started off trying to comment and make things neat and what not... And yeah that went out the door pretty quickly when things started breaking.
+So yeah sorry
