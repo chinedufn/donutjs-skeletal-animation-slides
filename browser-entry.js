@@ -27,13 +27,20 @@ insertStyles(
     font-size: 38px;
     font-family: "Helvetica Neue";
   }
-  h2 {
-  }
+
   div#upper-controls div {
     color: #ffff00;
     background-color: #00007d;
     text-align: center;
     width: 100%;
+  }
+
+  a {
+    color: #ffff00;
+  }
+
+  a:hover {
+    color: #ffffaa;
   }
 
   div#upper-controls button {
