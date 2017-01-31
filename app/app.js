@@ -25,7 +25,7 @@ function InitApp () {
     htmlRenderLoop.update(newState)
   })
 
-  var canvas = initCanvas()
+  var canvas = initCanvas(StateStore)
   var gl = canvas.getContext('webgl')
   gl.clearColor(0.0, 0.0, 0.0, 1.0)
   gl.enable(gl.DEPTH_TEST)

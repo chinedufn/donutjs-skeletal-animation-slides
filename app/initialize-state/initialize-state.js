@@ -7,9 +7,17 @@ module.exports = initializeState
 var defaultState = {
   // Set the default path for the router
   path: require('global/document').location ? require('global/document').location.pathname : '/',
-  perspective: mat4Perspective([], Math.PI / 4, 500 / 500, 0.01, 100),
   slideNum: 0,
-  currentClockTime: 0
+  currentClockTime: 0,
+  camera: {
+    xRadians: 0,
+    yRadians: 0
+  },
+  viewport: {
+    width: 500,
+    height: 500,
+    perspective: mat4Perspective([], Math.PI / 4, 500 / 500, 0.01, 100)
+  }
 }
 
 function initializeState (initialState) {

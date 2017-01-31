@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.76.0 commit date:2015-11-03, commit time:10:56, hash:f337fea</authoring_tool>
     </contributor>
-    <created>2017-01-30T22:58:02</created>
-    <modified>2017-01-30T22:58:02</modified>
+    <created>2017-01-30T23:27:03</created>
+    <modified>2017-01-30T23:27:03</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -112,63 +112,31 @@
       </sampler>
       <channel source="#Armature_Bone_001_pose_matrix-sampler" target="Bone_001/transform"/>
     </animation>
-    <animation id="Armature_Bone_002_pose_matrix">
-      <source id="Armature_Bone_002_pose_matrix-input">
-        <float_array id="Armature_Bone_002_pose_matrix-input-array" count="4">0.04166662 1.666667 3.333333 5</float_array>
-        <technique_common>
-          <accessor source="#Armature_Bone_002_pose_matrix-input-array" count="4" stride="1">
-            <param name="TIME" type="float"/>
-          </accessor>
-        </technique_common>
-      </source>
-      <source id="Armature_Bone_002_pose_matrix-output">
-        <float_array id="Armature_Bone_002_pose_matrix-output-array" count="64">1 0 0 0 0 0 -1 0.9807937 0 1 0 0 0 0 0 1 1 0 0 0 0 0 -1 0.9807937 0 1 0 0 0 0 0 1 1 0 0 0 0 0 -1 0.9807937 0 1 0 0 0 0 0 1 1 0 0 0 0 0 -1 0.9807937 0 1 0 0 0 0 0 1</float_array>
-        <technique_common>
-          <accessor source="#Armature_Bone_002_pose_matrix-output-array" count="4" stride="16">
-            <param name="TRANSFORM" type="float4x4"/>
-          </accessor>
-        </technique_common>
-      </source>
-      <source id="Armature_Bone_002_pose_matrix-interpolation">
-        <Name_array id="Armature_Bone_002_pose_matrix-interpolation-array" count="4">LINEAR LINEAR LINEAR LINEAR</Name_array>
-        <technique_common>
-          <accessor source="#Armature_Bone_002_pose_matrix-interpolation-array" count="4" stride="1">
-            <param name="INTERPOLATION" type="name"/>
-          </accessor>
-        </technique_common>
-      </source>
-      <sampler id="Armature_Bone_002_pose_matrix-sampler">
-        <input semantic="INPUT" source="#Armature_Bone_002_pose_matrix-input"/>
-        <input semantic="OUTPUT" source="#Armature_Bone_002_pose_matrix-output"/>
-        <input semantic="INTERPOLATION" source="#Armature_Bone_002_pose_matrix-interpolation"/>
-      </sampler>
-      <channel source="#Armature_Bone_002_pose_matrix-sampler" target="Bone_002/transform"/>
-    </animation>
   </library_animations>
   <library_controllers>
     <controller id="Armature_Cube_001-skin" name="Armature">
       <skin source="#Cube_001-mesh">
         <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
         <source id="Armature_Cube_001-skin-joints">
-          <Name_array id="Armature_Cube_001-skin-joints-array" count="3">Bone Bone_001 Bone_002</Name_array>
+          <Name_array id="Armature_Cube_001-skin-joints-array" count="2">Bone Bone_001</Name_array>
           <technique_common>
-            <accessor source="#Armature_Cube_001-skin-joints-array" count="3" stride="1">
+            <accessor source="#Armature_Cube_001-skin-joints-array" count="2" stride="1">
               <param name="JOINT" type="name"/>
             </accessor>
           </technique_common>
         </source>
         <source id="Armature_Cube_001-skin-bind_poses">
-          <float_array id="Armature_Cube_001-skin-bind_poses-array" count="48">1 0 0 0 0 0 1 0 0 -1 0 0.9807937 0 0 0 1 1 0 0 0 0 0 1 -1 0 -1 0 0.9807937 0 0 0 1 1 0 0 0 0 0 1 0 0 -1 0 0.9807937 0 0 0 1</float_array>
+          <float_array id="Armature_Cube_001-skin-bind_poses-array" count="32">1 0 0 0 0 0 1 0 0 -1 0 0.9807937 0 0 0 1 1 0 0 0 0 0 1 -1 0 -1 0 0.9807937 0 0 0 1</float_array>
           <technique_common>
-            <accessor source="#Armature_Cube_001-skin-bind_poses-array" count="3" stride="16">
+            <accessor source="#Armature_Cube_001-skin-bind_poses-array" count="2" stride="16">
               <param name="TRANSFORM" type="float4x4"/>
             </accessor>
           </technique_common>
         </source>
         <source id="Armature_Cube_001-skin-weights">
-          <float_array id="Armature_Cube_001-skin-weights-array" count="21">0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 1 1 1 1 1</float_array>
+          <float_array id="Armature_Cube_001-skin-weights-array" count="17">1 1 1 1 1 1 1 1 1 0.02945435 0.9705457 0.03110867 0.9688914 0.03110873 0.9688913 0.02945441 0.9705456</float_array>
           <technique_common>
-            <accessor source="#Armature_Cube_001-skin-weights-array" count="21" stride="1">
+            <accessor source="#Armature_Cube_001-skin-weights-array" count="17" stride="1">
               <param name="WEIGHT" type="float"/>
             </accessor>
           </technique_common>
@@ -180,8 +148,8 @@
         <vertex_weights count="13">
           <input semantic="JOINT" source="#Armature_Cube_001-skin-joints" offset="0"/>
           <input semantic="WEIGHT" source="#Armature_Cube_001-skin-weights" offset="1"/>
-          <vcount>2 2 2 2 2 2 2 2 1 1 1 1 1 </vcount>
-          <v>0 0 2 1 0 2 2 3 0 4 2 5 0 6 2 7 0 8 2 9 0 10 2 11 0 12 2 13 0 14 2 15 1 16 1 17 1 18 1 19 1 20</v>
+          <vcount>1 1 1 1 1 1 1 1 1 2 2 2 2 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5 0 6 0 7 1 8 0 9 1 10 0 11 1 12 0 13 1 14 0 15 1 16</v>
         </vertex_weights>
       </skin>
     </controller>
@@ -200,9 +168,6 @@
             <matrix sid="transform">1 0 0 0 0 1 0 1 0 0 1 0 0 0 0 1</matrix>
           </node>
         </node>
-        <node id="Bone_002" name="Bone.002" sid="Bone_002" type="JOINT">
-          <matrix sid="transform">1 0 0 0 0 0 -1 0.9807937 0 1 0 0 0 0 0 1</matrix>
-        </node>
       </node>
       <node id="Cube_001" name="Cube_001" type="NODE">
         <translate sid="location">0 0 0</translate>
@@ -212,7 +177,6 @@
         <scale sid="scale">1 1 1</scale>
         <instance_controller url="#Armature_Cube_001-skin">
           <skeleton>#Bone</skeleton>
-          <skeleton>#Bone_002</skeleton>
         </instance_controller>
       </node>
     </visual_scene>
