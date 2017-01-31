@@ -29,7 +29,7 @@ function renderCanvas (gl, models, state) {
   gl.useProgram(models.socialMedia.shaderProgram)
 
   var camera = createOrbitCamera({
-    position: [0, 5, 7],
+    position: [0, 2.5, 3.5],
     target: [0, 0, 0],
     xRadians: state.camera.xRadians,
     yRadians: state.camera.yRadians

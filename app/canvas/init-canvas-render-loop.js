@@ -9,7 +9,7 @@ function initCanvasRenderLoop (gl, models, StateStore) {
     var state = StateStore.get()
     if (!state.timeIsFrozen) {
       state.currentClockTime += dt / 1000
-      state.textRotation += dt / 1500
+      state.textRotation += dt / 3500
     }
     StateStore.set(state)
     state = StateStore.get()
