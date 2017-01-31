@@ -20,7 +20,8 @@ var defaultState = {
   },
   timeIsFrozen: false,
   // Time specified by our input sliders
-  sliderTime: 0
+  sliderTime: 0,
+  textRotation: 0
 }
 
 function initializeState (initialState) {

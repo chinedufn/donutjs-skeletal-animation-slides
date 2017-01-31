@@ -14,7 +14,7 @@ function renderIntroduction (h, StateStore) {
   return h('div', {
   }, [
     h('h1', {
-    }, 'We\'ll start with the usual. 8 points moving over time'),
+    }, 'A simple cube. 8 points moving over time'),
     h('label', {
     }, state.currentClockTime.toFixed(1) + ' seconds')
   ])

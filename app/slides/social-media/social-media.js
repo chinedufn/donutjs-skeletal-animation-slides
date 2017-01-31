@@ -2,6 +2,7 @@ var animationSystem = require('skeletal-animation-system')
 var createOrbitCamera = require('create-orbit-camera')
 var vec3Normalize = require('gl-vec3/normalize')
 var vec3Scale = require('gl-vec3/scale')
+var glMat4 = require('gl-mat4')
 
 module.exports = {
   renderHTML: rendersocialMediaWithController,
@@ -53,6 +54,9 @@ function renderCanvas (gl, models, state) {
     }
     // previousAnimation: state.upperBody.previousAnimation
   })
+  // Rotate the text in place
+  var modelViewMatrix = glMat4.create()
+  glMat4.rotateY(modelViewMatrix, camera.viewMatrix, state.textRotation)
 
   var interpolatedRotQuats = []
   var interpolatedTransQuats = []
@@ -68,7 +72,7 @@ function renderCanvas (gl, models, state) {
     uAmbientColor: [0.2, 0.2, 0.2],
     uLightingDirection: normalizedLD,
     uDirectionalColor: [1.0, 0, 0],
-    uMVMatrix: camera.viewMatrix,
+    uMVMatrix: modelViewMatrix,
     uPMatrix: state.viewport.perspective,
     boneRotQuaternions0: interpolatedRotQuats[0],
     boneTransQuaternions0: interpolatedTransQuats[0]
