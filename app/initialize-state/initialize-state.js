@@ -17,7 +17,10 @@ var defaultState = {
     width: 500,
     height: 500,
     perspective: mat4Perspective([], Math.PI / 4, 500 / 500, 0.01, 100)
-  }
+  },
+  timeIsFrozen: false,
+  // Time specified by our input sliders
+  sliderTime: 0
 }
 
 function initializeState (initialState) {

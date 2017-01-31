@@ -18,8 +18,7 @@ function initModels (gl) {
   models.cowboy = loadModel(gl, require('../../asset/cowboy.json'), {})
   models.cowboyBones = loadModel(gl, require('../../asset/cowboy-bones.json'), {})
   models.socialMedia = loadModel(gl, require('../../asset/chinedufn.json'), {})
-
-
+  models.oldMan = loadModel(gl, require('../../asset/old-man.json'), {})
 
   return models
 }

@@ -4,31 +4,37 @@ var vec3Normalize = require('gl-vec3/normalize')
 var vec3Scale = require('gl-vec3/scale')
 
 module.exports = {
-  renderHTML: rendersocialMediaWithController,
+  renderHTML: renderMoreVertices,
   renderCanvas: renderCanvas
 }
 
-function rendersocialMediaWithController (h, StateStore) {
+function renderMoreVertices (h, StateStore) {
+  var state = StateStore.get()
+
   return h('div', {
   }, [
     h('h1', {
-    }, [
-      'If you\'re interested in the 3d web, join me on Twitter/GitHub:'
-    ]),
-    h('h1', {
-    }, [
-      '@chinedufn'
-    ])
+    }, 'If we freeze time - the points stop'),
+    h('button#time', {
+      className: state.timeIsFrozen ? 'green' : 'red',
+      onclick: function () {
+        state = StateStore.get()
+        // Toggle time
+        StateStore.set('timeIsFrozen', !state.timeIsFrozen)
+      }
+    }, state.timeIsFrozen ? 'Start Time' : 'Freeze Time'),
+    h('label', {
+    }, state.currentClockTime.toFixed(1) + ' seconds')
   ])
 }
 
 function renderCanvas (gl, models, state) {
   gl.viewport(0, 0, state.viewport.width, state.viewport.height)
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-  gl.useProgram(models.socialMedia.shaderProgram)
+  gl.useProgram(models.cowboy.shaderProgram)
 
   var camera = createOrbitCamera({
-    position: [0, 5, 7],
+    position: [0, 20, 35],
     target: [0, 0, 0],
     xRadians: state.camera.xRadians,
     yRadians: state.camera.yRadians
@@ -38,17 +44,19 @@ function renderCanvas (gl, models, state) {
   var normalizedLD = []
   vec3Normalize(normalizedLD, lightingDirection)
   vec3Scale(normalizedLD, normalizedLD, -1)
+  // require('gl-vec3/transformMat4')(normalizedLD, normalizedLD, camera.viewMatrix)
 
+  var jointNums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
   var interpolatedQuats = animationSystem.interpolateJoints({
     blendFunction: function (dt) {
       // Blend linearly over 1 second
       return dt
     },
     currentTime: state.currentClockTime,
-    keyframes: models.socialMedia.keyframes,
-    jointNums: [0],
+    keyframes: models.cowboy.keyframes,
+    jointNums: jointNums,
     currentAnimation: {
-      range: [0, 4],
+      range: [6, 17],
       startTime: 0
     }
     // previousAnimation: state.upperBody.previousAnimation
@@ -57,7 +65,6 @@ function renderCanvas (gl, models, state) {
   var interpolatedRotQuats = []
   var interpolatedTransQuats = []
 
-  var jointNums = [0]
   jointNums.forEach(function (jointNum) {
     interpolatedRotQuats[jointNum] = interpolatedQuats[jointNum].slice(0, 4)
     interpolatedTransQuats[jointNum] = interpolatedQuats[jointNum].slice(4, 8)
@@ -69,18 +76,22 @@ function renderCanvas (gl, models, state) {
     uLightingDirection: normalizedLD,
     uDirectionalColor: [1.0, 0, 0],
     uMVMatrix: camera.viewMatrix,
-    uPMatrix: state.viewport.perspective,
-    boneRotQuaternions0: interpolatedRotQuats[0],
-    boneTransQuaternions0: interpolatedTransQuats[0]
+    uPMatrix: state.viewport.perspective
   }
 
-  models.socialMedia.draw({
+  jointNums.forEach(function (jointNum) {
+    uniforms['boneRotQuaternions' + jointNum] = interpolatedRotQuats[jointNum]
+    uniforms['boneTransQuaternions' + jointNum] = interpolatedTransQuats[jointNum]
+  })
+
+  models.cowboy.draw({
     attributes: {
-      aVertexPosition: models.socialMedia.bufferData.aVertexPosition,
-      aVertexNormal: models.socialMedia.bufferData.aVertexNormal,
-      aJointIndex: models.socialMedia.bufferData.aJointIndex,
-      aJointWeight: models.socialMedia.bufferData.aJointWeight
+      aVertexPosition: models.cowboy.bufferData.aVertexPosition,
+      aVertexNormal: models.cowboy.bufferData.aVertexNormal,
+      aJointIndex: models.cowboy.bufferData.aJointIndex,
+      aJointWeight: models.cowboy.bufferData.aJointWeight
     },
     uniforms: uniforms
   })
 }
+

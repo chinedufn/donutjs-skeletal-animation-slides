@@ -10,7 +10,10 @@ module.exports = {
 
 function renderMoreVertices (h, StateStore) {
   return h('div', {
-  }, 'More vertices')
+  }, [
+    h('h1', {
+    }, 'So we have our 700 vertices')
+  ])
 }
 
 function renderCanvas (gl, models, state) {

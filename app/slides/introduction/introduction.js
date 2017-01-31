@@ -10,7 +10,10 @@ module.exports = {
 
 function renderIntroduction (h, StateStore) {
   return h('div', {
-  }, 'introduction')
+  }, [
+    h('h1', {
+    }, 'So what do we do? Let\'s start with non-skeletal animation')
+  ])
 }
 
 function renderCanvas (gl, models, state) {

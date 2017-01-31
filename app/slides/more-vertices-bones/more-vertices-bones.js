@@ -10,7 +10,10 @@ module.exports = {
 
 function renderMoreVerticesBones (h, StateStore) {
   return h('div', {
-  }, 'More vertices')
+  }, [
+    h('h1', {
+    }, 'But we\'re assigning them to 18 controllers')
+  ])
 }
 
 function renderCanvas (gl, models, state) {

@@ -10,7 +10,12 @@ module.exports = {
 
 function renderCubeWithController (h, StateStore) {
   return h('div', {
-  }, 'Cube with controller')
+  }, [
+    h('h1', {
+    }, [
+      'With skeletal animation, we make a small but important change'
+    ])
+  ])
 }
 
 function renderCanvas (gl, models, state) {

@@ -4,31 +4,40 @@ var vec3Normalize = require('gl-vec3/normalize')
 var vec3Scale = require('gl-vec3/scale')
 
 module.exports = {
-  renderHTML: rendersocialMediaWithController,
+  renderHTML: renderIntroduction,
   renderCanvas: renderCanvas
 }
 
-function rendersocialMediaWithController (h, StateStore) {
+function renderIntroduction (h, StateStore) {
+  var state = StateStore.get()
+
   return h('div', {
   }, [
     h('h1', {
-    }, [
-      'If you\'re interested in the 3d web, join me on Twitter/GitHub:'
-    ]),
-    h('h1', {
-    }, [
-      '@chinedufn'
-    ])
+    }, 'Define the points at a few times, fill in the in between'),
+    h('input', {
+      oninput: function (e) {
+        var time = e.target.value
+        StateStore.set('sliderTime', time)
+      },
+      type: 'range',
+      min: 0,
+      max: 10,
+      step: 1.0,
+      value: state.sliderTime
+    }),
+    h('label', {
+    }, state.sliderTime + ' seconds')
   ])
 }
 
 function renderCanvas (gl, models, state) {
   gl.viewport(0, 0, state.viewport.width, state.viewport.height)
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-  gl.useProgram(models.socialMedia.shaderProgram)
+  gl.useProgram(models.cube.shaderProgram)
 
   var camera = createOrbitCamera({
-    position: [0, 5, 7],
+    position: [0, 10, 15],
     target: [0, 0, 0],
     xRadians: state.camera.xRadians,
     yRadians: state.camera.yRadians
@@ -44,8 +53,8 @@ function renderCanvas (gl, models, state) {
       // Blend linearly over 1 second
       return dt
     },
-    currentTime: state.currentClockTime,
-    keyframes: models.socialMedia.keyframes,
+    currentTime: state.sliderTime,
+    keyframes: models.cube.keyframes,
     jointNums: [0],
     currentAnimation: {
       range: [0, 4],
@@ -74,13 +83,15 @@ function renderCanvas (gl, models, state) {
     boneTransQuaternions0: interpolatedTransQuats[0]
   }
 
-  models.socialMedia.draw({
+  models.cube.draw({
     attributes: {
-      aVertexPosition: models.socialMedia.bufferData.aVertexPosition,
-      aVertexNormal: models.socialMedia.bufferData.aVertexNormal,
-      aJointIndex: models.socialMedia.bufferData.aJointIndex,
-      aJointWeight: models.socialMedia.bufferData.aJointWeight
+      aVertexPosition: models.cube.bufferData.aVertexPosition,
+      aVertexNormal: models.cube.bufferData.aVertexNormal,
+      aJointIndex: models.cube.bufferData.aJointIndex,
+      aJointWeight: models.cube.bufferData.aJointWeight
     },
     uniforms: uniforms
   })
 }
+
+

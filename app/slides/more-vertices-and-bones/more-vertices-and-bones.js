@@ -10,7 +10,10 @@ module.exports = {
 
 function renderMoreVertices (h, StateStore) {
   return h('div', {
-  }, 'More vertices')
+  }, [
+    h('h1', {
+    }, 'And all together now 🎉')
+  ])
 }
 
 function renderCanvas (gl, models, state) {

@@ -10,7 +10,10 @@ module.exports = {
 
 function renderWeightPaintedPrismHTML (h, StateStore) {
   return h('div', {
-  }, 'Cube with controller')
+  }, [
+    h('h1', {
+    }, 'The magic starts when you have multiple controllers')
+  ])
 }
 
 function renderCanvas (gl, models, state) {

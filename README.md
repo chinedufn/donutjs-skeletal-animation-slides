@@ -40,4 +40,5 @@ document.body.appendChild(slidesDomElement)
 ## Comments
 
 I started off trying to comment and make things neat and what not... And yeah that went out the door pretty quickly when things started breaking.
+Then some hardcore copy pasta was boiled.
 So yeah sorry
