@@ -4,43 +4,44 @@ var vec3Normalize = require('gl-vec3/normalize')
 var vec3Scale = require('gl-vec3/scale')
 
 module.exports = {
-  renderHTML: renderWeightPaintedPrismHTML,
+  renderHTML: renderMoreVertices,
   renderCanvas: renderCanvas
 }
 
-function renderWeightPaintedPrismHTML (h, StateStore) {
+function renderMoreVertices (h, StateStore) {
   return h('div', {
-  }, 'Cube with controller')
+  }, 'More vertices')
 }
 
 function renderCanvas (gl, models, state) {
   gl.viewport(0, 0, state.viewport.width, state.viewport.height)
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-  gl.useProgram(models.weightPaint.shaderProgram)
+  gl.useProgram(models.cowboy.shaderProgram)
 
   var camera = createOrbitCamera({
-    position: [0, 10, 15],
+    position: [0, 20, 35],
     target: [0, 0, 0],
     xRadians: state.camera.xRadians,
     yRadians: state.camera.yRadians
   })
 
-  var lightingDirection = [1, -1, -1]
+  var lightingDirection = [1, -3, -1]
   var normalizedLD = []
   vec3Normalize(normalizedLD, lightingDirection)
   vec3Scale(normalizedLD, normalizedLD, -1)
+  // require('gl-vec3/transformMat4')(normalizedLD, normalizedLD, camera.viewMatrix)
 
-  var jointNums = [0, 1]
+  var jointNums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
   var interpolatedQuats = animationSystem.interpolateJoints({
     blendFunction: function (dt) {
       // Blend linearly over 1 second
       return dt
     },
     currentTime: state.currentClockTime,
-    keyframes: models.weightPaint.keyframes,
+    keyframes: models.cowboy.keyframes,
     jointNums: jointNums,
     currentAnimation: {
-      range: [0, 4],
+      range: [6, 17],
       startTime: 0
     }
     // previousAnimation: state.upperBody.previousAnimation
@@ -56,23 +57,24 @@ function renderCanvas (gl, models, state) {
 
   var uniforms = {
     uUseLighting: true,
-    uAmbientColor: [0.4, 0.4, 0.4],
+    uAmbientColor: [0.2, 0.2, 0.2],
     uLightingDirection: normalizedLD,
-    uDirectionalColor: [0.0, 1.0, 1.0],
+    uDirectionalColor: [1.0, 0, 0],
     uMVMatrix: camera.viewMatrix,
-    uPMatrix: state.viewport.perspective,
-    boneRotQuaternions0: interpolatedRotQuats[0],
-    boneTransQuaternions0: interpolatedTransQuats[0],
-    boneRotQuaternions1: interpolatedRotQuats[1],
-    boneTransQuaternions1: interpolatedTransQuats[1]
+    uPMatrix: state.viewport.perspective
   }
 
-  models.weightPaint.draw({
+  jointNums.forEach(function (jointNum) {
+    uniforms['boneRotQuaternions' + jointNum] = interpolatedRotQuats[jointNum]
+    uniforms['boneTransQuaternions' + jointNum] = interpolatedTransQuats[jointNum]
+  })
+
+  models.cowboy.draw({
     attributes: {
-      aVertexPosition: models.weightPaint.bufferData.aVertexPosition,
-      aVertexNormal: models.weightPaint.bufferData.aVertexNormal,
-      aJointIndex: models.weightPaint.bufferData.aJointIndex,
-      aJointWeight: models.weightPaint.bufferData.aJointWeight
+      aVertexPosition: models.cowboy.bufferData.aVertexPosition,
+      aVertexNormal: models.cowboy.bufferData.aVertexNormal,
+      aJointIndex: models.cowboy.bufferData.aJointIndex,
+      aJointWeight: models.cowboy.bufferData.aJointWeight
     },
     uniforms: uniforms
   })
@@ -83,14 +85,16 @@ function renderCanvas (gl, models, state) {
 function renderBone (gl, models, state, interpolatedRotQuats, interpolatedTransQuats, camera, uniforms) {
   uniforms.uAmbientColor = [0, 0, 0.5]
 
-  gl.useProgram(models.weightPaintBones.shaderProgram)
-  models.weightPaintBones.draw({
+  gl.useProgram(models.cowboyBones.shaderProgram)
+  models.cowboyBones.draw({
     attributes: {
-      aVertexPosition: models.weightPaintBones.bufferData.aVertexPosition,
-      aVertexNormal: models.weightPaintBones.bufferData.aVertexNormal,
-      aJointIndex: models.weightPaintBones.bufferData.aJointIndex,
-      aJointWeight: models.weightPaintBones.bufferData.aJointWeight
+      aVertexPosition: models.cowboyBones.bufferData.aVertexPosition,
+      aVertexNormal: models.cowboyBones.bufferData.aVertexNormal,
+      aJointIndex: models.cowboyBones.bufferData.aJointIndex,
+      aJointWeight: models.cowboyBones.bufferData.aJointWeight
     },
     uniforms: uniforms
   })
 }
+
+

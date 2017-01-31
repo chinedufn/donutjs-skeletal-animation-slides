@@ -13,25 +13,22 @@ function renderIntroduction (h, StateStore) {
   }, 'introduction')
 }
 
-var xRadians = 0
 function renderCanvas (gl, models, state) {
-  gl.viewport(0, 0, 500, 500)
+  gl.viewport(0, 0, state.viewport.width, state.viewport.height)
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
   gl.useProgram(models.cube.shaderProgram)
 
-  xRadians += 0.01
   var camera = createOrbitCamera({
-    position: [0, 3, -15],
+    position: [0, 10, 15],
     target: [0, 0, 0],
-    xRadians: 0,
-    yRadians: 0
+    xRadians: state.camera.xRadians,
+    yRadians: state.camera.yRadians
   })
 
   var lightingDirection = [1, -3, -1]
   var normalizedLD = []
   vec3Normalize(normalizedLD, lightingDirection)
   vec3Scale(normalizedLD, normalizedLD, -1)
-  require('gl-vec3/transformMat4')(normalizedLD, normalizedLD, camera.viewMatrix)
 
   var interpolatedQuats = animationSystem.interpolateJoints({
     blendFunction: function (dt) {
@@ -63,7 +60,7 @@ function renderCanvas (gl, models, state) {
     uLightingDirection: normalizedLD,
     uDirectionalColor: [1.0, 0, 0],
     uMVMatrix: camera.viewMatrix,
-    uPMatrix: state.perspective,
+    uPMatrix: state.viewport.perspective,
     boneRotQuaternions0: interpolatedRotQuats[0],
     boneTransQuaternions0: interpolatedTransQuats[0]
   }

@@ -33,7 +33,7 @@ function renderHTML (StateStore) {
       onclick: function () {
         var currentState = StateStore.get()
         currentState.slideNum += 1
-        currentState.slideNum = Math.min(currentState.slideNum, 3)
+        currentState.slideNum = Math.min(currentState.slideNum, 6)
         StateStore.set(currentState)
       },
       style: {

@@ -4,22 +4,22 @@ var vec3Normalize = require('gl-vec3/normalize')
 var vec3Scale = require('gl-vec3/scale')
 
 module.exports = {
-  renderHTML: renderCubeWithController,
+  renderHTML: renderMoreVerticesBones,
   renderCanvas: renderCanvas
 }
 
-function renderCubeWithController (h, StateStore) {
+function renderMoreVerticesBones (h, StateStore) {
   return h('div', {
-  }, 'Cube with controller')
+  }, 'More vertices')
 }
 
 function renderCanvas (gl, models, state) {
   gl.viewport(0, 0, state.viewport.width, state.viewport.height)
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-  gl.useProgram(models.cube.shaderProgram)
+  gl.useProgram(models.cowboy.shaderProgram)
 
   var camera = createOrbitCamera({
-    position: [0, 10, 15],
+    position: [0, 20, 35],
     target: [0, 0, 0],
     xRadians: state.camera.xRadians,
     yRadians: state.camera.yRadians
@@ -29,17 +29,19 @@ function renderCanvas (gl, models, state) {
   var normalizedLD = []
   vec3Normalize(normalizedLD, lightingDirection)
   vec3Scale(normalizedLD, normalizedLD, -1)
+  // require('gl-vec3/transformMat4')(normalizedLD, normalizedLD, camera.viewMatrix)
 
+  var jointNums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
   var interpolatedQuats = animationSystem.interpolateJoints({
     blendFunction: function (dt) {
       // Blend linearly over 1 second
       return dt
     },
     currentTime: state.currentClockTime,
-    keyframes: models.cube.keyframes,
-    jointNums: [0],
+    keyframes: models.cowboy.keyframes,
+    jointNums: jointNums,
     currentAnimation: {
-      range: [0, 4],
+      range: [6, 17],
       startTime: 0
     }
     // previousAnimation: state.upperBody.previousAnimation
@@ -48,7 +50,6 @@ function renderCanvas (gl, models, state) {
   var interpolatedRotQuats = []
   var interpolatedTransQuats = []
 
-  var jointNums = [0]
   jointNums.forEach(function (jointNum) {
     interpolatedRotQuats[jointNum] = interpolatedQuats[jointNum].slice(0, 4)
     interpolatedTransQuats[jointNum] = interpolatedQuats[jointNum].slice(4, 8)
@@ -60,34 +61,23 @@ function renderCanvas (gl, models, state) {
     uLightingDirection: normalizedLD,
     uDirectionalColor: [1.0, 0, 0],
     uMVMatrix: camera.viewMatrix,
-    uPMatrix: state.viewport.perspective,
-    boneRotQuaternions0: interpolatedRotQuats[0],
-    boneTransQuaternions0: interpolatedTransQuats[0]
+    uPMatrix: state.viewport.perspective
   }
 
-  models.cube.draw({
-    attributes: {
-      aVertexPosition: models.cube.bufferData.aVertexPosition,
-      aVertexNormal: models.cube.bufferData.aVertexNormal,
-      aJointIndex: models.cube.bufferData.aJointIndex,
-      aJointWeight: models.cube.bufferData.aJointWeight
-    },
-    uniforms: uniforms
+  jointNums.forEach(function (jointNum) {
+    uniforms['boneRotQuaternions' + jointNum] = interpolatedRotQuats[jointNum]
+    uniforms['boneTransQuaternions' + jointNum] = interpolatedTransQuats[jointNum]
   })
 
-  renderBone(gl, models, state, interpolatedRotQuats, interpolatedTransQuats, camera, uniforms)
-}
-
-function renderBone (gl, models, state, interpolatedRotQuats, interpolatedTransQuats, camera, uniforms) {
   uniforms.uAmbientColor = [0, 0, 0.5]
 
-  gl.useProgram(models.cubeBone.shaderProgram)
-  models.cubeBone.draw({
+  gl.useProgram(models.cowboyBones.shaderProgram)
+  models.cowboyBones.draw({
     attributes: {
-      aVertexPosition: models.cubeBone.bufferData.aVertexPosition,
-      aVertexNormal: models.cubeBone.bufferData.aVertexNormal,
-      aJointIndex: models.cubeBone.bufferData.aJointIndex,
-      aJointWeight: models.cubeBone.bufferData.aJointWeight
+      aVertexPosition: models.cowboyBones.bufferData.aVertexPosition,
+      aVertexNormal: models.cowboyBones.bufferData.aVertexNormal,
+      aJointIndex: models.cowboyBones.bufferData.aJointIndex,
+      aJointWeight: models.cowboyBones.bufferData.aJointWeight
     },
     uniforms: uniforms
   })

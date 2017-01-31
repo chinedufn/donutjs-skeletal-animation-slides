@@ -15,6 +15,11 @@ function initModels (gl) {
   models.weightPaintBones = loadModel(gl, require('../../asset/tall-bendy-thing-bones.json'), {
     vertexShaderFunc: weightPaintBoneShader
   })
+  models.cowboy = loadModel(gl, require('../../asset/cowboy.json'), {})
+  models.cowboyBones = loadModel(gl, require('../../asset/cowboy-bones.json'), {})
+  models.socialMedia = loadModel(gl, require('../../asset/chinedufn.json'), {})
+
+
 
   return models
 }
