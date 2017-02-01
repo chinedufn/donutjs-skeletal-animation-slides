@@ -17,12 +17,16 @@ function rendersocialMediaWithController (h, StateStore) {
       'If you\'re interested in the 3d web, join me on Twitter/GitHub:'
     ]),
     h('a', {
-      href: 'https://chinedufn.com'
+      href: 'http://chinedufn.com'
     }, [
       h('h1', {
       }, [
         '@chinedufn'
       ])
+    ]),
+    h('h2', {
+    }, [
+      '(Slides source on GitHub)'
     ])
   ])
 }

@@ -14,7 +14,7 @@ function renderMoreVertices (h, StateStore) {
   return h('div', {
   }, [
     h('h1', {
-    }, 'If we start time up again - the points move'),
+    }, 'Skeletal animation is many of these poses over time'),
     h('button#time', {
       className: state.timeIsFrozen ? 'green' : 'red',
       onclick: function () {

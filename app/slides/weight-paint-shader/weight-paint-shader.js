@@ -22,7 +22,7 @@ function renderCanvas (gl, models, state) {
   gl.useProgram(models.weightPaint.shaderProgram)
 
   var camera = createOrbitCamera({
-    position: [0, 10, 15],
+    position: [0, 5, 7.5],
     target: [0, 0, 0],
     xRadians: state.camera.xRadians,
     yRadians: state.camera.yRadians

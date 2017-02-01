@@ -9,22 +9,12 @@ module.exports = {
 }
 
 function renderMoreVertices (h, StateStore) {
-  var state = StateStore.get()
-
   return h('div', {
   }, [
     h('h1', {
-    }, 'If we freeze time, we call that a pose'),
-    h('button#time', {
-      className: state.timeIsFrozen ? 'green' : 'red',
-      onclick: function () {
-        state = StateStore.get()
-        // Toggle time
-        StateStore.set('timeIsFrozen', !state.timeIsFrozen)
-      }
-    }, state.timeIsFrozen ? 'Start Time' : 'Freeze Time'),
-    h('label', {
-    }, state.currentClockTime.toFixed(1) + ' seconds')
+    }, 'Skeletal Animation in Your Browser via WebGL'),
+    h('h2', {
+    }, 'By, Chinedu Francis Nwafili')
   ])
 }
 
@@ -94,4 +84,5 @@ function renderCanvas (gl, models, state) {
     uniforms: uniforms
   })
 }
+
 

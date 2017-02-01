@@ -28,6 +28,14 @@ insertStyles(
     font-family: "Helvetica Neue";
   }
 
+  h2 {
+    color: #ffff00;
+    font-size: 28px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    font-family: "Helvetica Neue";
+  }
+
   div#upper-controls div {
     color: #ffff00;
     background-color: #00007d;
@@ -62,6 +70,7 @@ insertStyles(
   }
 
   div#upper-controls label {
+    font-family: "Helvetica Neue";
     font-size: 26px;
   }
 

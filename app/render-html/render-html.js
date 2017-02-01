@@ -56,9 +56,9 @@ function renderHTML (StateStore) {
       onclick: function () {
         var currentState = StateStore.get()
         currentState.slideNum += 1
-        currentState.slideNum = Math.min(currentState.slideNum, 16)
+        currentState.slideNum = Math.min(currentState.slideNum, 18)
         StateStore.set(currentState)
       }
-    }, state.slideNum === 16 ? '' : '>')
+    }, state.slideNum === 18 ? '' : '>')
   ])
 }

@@ -9,22 +9,10 @@ module.exports = {
 }
 
 function renderMoreVertices (h, StateStore) {
-  var state = StateStore.get()
-
   return h('div', {
   }, [
     h('h1', {
-    }, 'If we freeze time, we call that a pose'),
-    h('button#time', {
-      className: state.timeIsFrozen ? 'green' : 'red',
-      onclick: function () {
-        state = StateStore.get()
-        // Toggle time
-        StateStore.set('timeIsFrozen', !state.timeIsFrozen)
-      }
-    }, state.timeIsFrozen ? 'Start Time' : 'Freeze Time'),
-    h('label', {
-    }, state.currentClockTime.toFixed(1) + ' seconds')
+    }, 'WebGL is a 2D (and sort of 3D) JavaScript API for rendering graphics in the browser')
   ])
 }
 
@@ -94,4 +82,5 @@ function renderCanvas (gl, models, state) {
     uniforms: uniforms
   })
 }
+
 
