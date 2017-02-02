@@ -17,7 +17,7 @@ function renderHTML (StateStore) {
     // Left slide button
     h('button#slide-left', {
       style: {
-        backgroundColor: 'black',
+        backgroundColor: state.viewport.width < 600 ? 'red' : 'black',
         border: 'none',
         color: 'white',
         cursor: 'pointer',
@@ -42,7 +42,7 @@ function renderHTML (StateStore) {
     // Right slide button
     h('button#slide-right', {
       style: {
-        backgroundColor: 'black',
+        backgroundColor: state.viewport.width < 600 ? 'red' : 'black',
         border: 'none',
         color: 'white',
         cursor: 'pointer',
