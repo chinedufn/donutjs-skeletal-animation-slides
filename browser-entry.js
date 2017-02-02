@@ -21,19 +21,38 @@ document.body.style.margin = 0
 // Drop in some quick css to make things look better
 insertStyles(
   `
-  h1 {
-    margin-bottom: 10px;
-    margin-top: 5px;
-    font-size: 38px;
-    font-family: "Helvetica Neue";
+  @media (min-width: 600px) {
+    h1 {
+      margin-bottom: 10px;
+      margin-top: 5px;
+      font-size: 26px;
+      font-family: "Helvetica Neue";
+    }
+
+    h2 {
+      color: #ffff00;
+      font-size: 28px;
+      margin-bottom: 3px;
+      margin-top: 3px;
+      font-family: "Helvetica Neue";
+    }
   }
 
-  h2 {
-    color: #ffff00;
-    font-size: 28px;
-    margin-bottom: 3px;
-    margin-top: 3px;
-    font-family: "Helvetica Neue";
+  @media (max-width: 600px) {
+    h1 {
+      margin-bottom: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+      font-family: "Helvetica Neue";
+    }
+
+    h2 {
+      color: #ffff00;
+      font-size: 13px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      font-family: "Helvetica Neue";
+    }
   }
 
   div#upper-controls div {
