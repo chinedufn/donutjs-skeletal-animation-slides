@@ -5,7 +5,11 @@ Skeletal Animation in Your Browser via WebGL
 
 ## Viewing the slides live
 
-[Click here to view the slides online]()
+[Click here to view the slides online](http://www.chinedufn.com/talks/donutjs/)
+
+## Viewing the talk
+
+TODO: Add YouTube link to talk
 
 ## Viewing the slides locally
 
