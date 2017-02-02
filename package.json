@@ -1,7 +1,7 @@
 {
   "name": "donutjs-skeletal-animation-slides",
   "version": "1.0.0",
-  "description": "Skeletal Animation in Your Browser via WebGL - the accompanying slides for a 10 minute slides at Portland's Donut.js meetup",
+  "description": "Skeletal Animation in Your Browser via WebGL - the accompanying slides for a 10 minute talk at Portland's Donut.js meetup",
   "main": "browser-entry.js",
   "scripts": {
     "start": "budo browser-entry.js --open --live --host=127.0.0.1 --dir=asset",
