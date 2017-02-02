@@ -38,23 +38,6 @@ insertStyles(
     }
   }
 
-  @media (max-width: 600px) {
-    h1 {
-      margin-bottom: 10px;
-      margin-top: 5px;
-      font-size: 16px;
-      font-family: "Helvetica Neue";
-    }
-
-    h2 {
-      color: #ffff00;
-      font-size: 13px;
-      margin-bottom: 2px;
-      margin-top: 2px;
-      font-family: "Helvetica Neue";
-    }
-  }
-
   div#upper-controls div {
     color: #ffff00;
     background-color: #00007d;
@@ -94,6 +77,31 @@ insertStyles(
   }
 
   div#upper-controls input {
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      margin-bottom: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+      font-family: "Helvetica Neue";
+    }
+
+    h2 {
+      color: #ffff00;
+      font-size: 13px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+      font-family: "Helvetica Neue";
+    }
+    div#upper-controls button {
+      font-size: 13px;
+    }
+
+    div#upper-controls label {
+      font-family: "Helvetica Neue";
+      font-size: 14px;
+    }
   }
   `
 )

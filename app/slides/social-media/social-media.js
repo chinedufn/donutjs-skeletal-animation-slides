@@ -24,9 +24,13 @@ function rendersocialMediaWithController (h, StateStore) {
         '@chinedufn'
       ])
     ]),
-    h('h2', {
+    h('a', {
+      href: 'https://github.com/chinedufn/donutjs-skeletal-animation-slides'
     }, [
-      '(Slides source on GitHub)'
+      h('h2', {
+      }, [
+        '(Slides source on GitHub)'
+      ])
     ])
   ])
 }

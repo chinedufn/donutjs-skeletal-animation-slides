@@ -11,7 +11,7 @@ function renderHTML (StateStore) {
     style: {
       display: 'flex',
       width: '100%',
-      height: '250px'
+      height: state.viewport.width < 600 ? '300px' : '250px'
     }
   }, [
     // Left slide button
@@ -21,7 +21,7 @@ function renderHTML (StateStore) {
         border: 'none',
         color: 'white',
         cursor: 'pointer',
-        fontSize: '48px',
+        fontSize: state.viewport.width < 600 ? '16px' : '48px',
         marginRight: '0px',
         outline: 'none',
         width: '50px',
@@ -46,7 +46,7 @@ function renderHTML (StateStore) {
         border: 'none',
         color: 'white',
         cursor: 'pointer',
-        fontSize: '48px',
+        fontSize: state.viewport.width < 600 ? '16px' : '48px',
         marginRight: '0px',
         height: '100%',
         marginLeft: 'auto',
